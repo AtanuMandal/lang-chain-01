@@ -13,7 +13,6 @@ def main():
         documents = load_data(file_path) 
         for doc in documents:
              split_helper(doc.page_content)
-             hf_embedding(doc.page_content)
         print(f"Loaded {len(documents)} documents from {file_path}")
 
     # Example usage of pdf loader
@@ -35,8 +34,9 @@ def main():
 
 def split_helper(text):
     chunks = split_text(text)
-    # for chunk in chunks:
-    #     print(chunk)
+    for chunk in chunks:
+        hf_embedding(chunk)
+    
 
 def hf_embedding(text):
     load_dotenv()
