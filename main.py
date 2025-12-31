@@ -2,7 +2,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from data_ingest import load_data, load_pdf, load_web_page
 from text_splitter import split_text
-from hugging_face import hf_embed
+from hugging_face import hf_embed_doc
 import os
 
 
@@ -34,14 +34,15 @@ def main():
 
 def split_helper(text):
     chunks = split_text(text)
-    for chunk in chunks:
+    for index,chunk in enumerate(chunks):
+        print(index)
         hf_embedding(chunk)
     
 
 def hf_embedding(text):
     load_dotenv()
     os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")
-    hf_embed(text)
+    hf_embed_doc(text)
 
 if __name__ == "__main__":
     main()

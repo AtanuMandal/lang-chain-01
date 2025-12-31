@@ -11,4 +11,4 @@ def hf_embed_doc(text):
     
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
     doc_result = embeddings.embed_documents([text])
-    print(doc_result)
+    print(doc_result[:10])
