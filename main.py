@@ -43,6 +43,7 @@ def hf_embedding(text):
     load_dotenv()
     os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")
     hf_embed_doc(text)
+    
 
 if __name__ == "__main__":
     main()
